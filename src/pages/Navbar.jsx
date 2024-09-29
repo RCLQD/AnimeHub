@@ -1,33 +1,18 @@
 function Navbar() {
     return(
-        <div className="navbar bg-base-100">
-            <div className="flex-1">
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+        <div className="navbar bg-black px-20">
+            <div className="flex-1 gap-x-12">
+                <a className="text-2xl font-medium font-poppins">
+                    <span>Anime<span className="text-red-400 font-semibold">Hub</span></span>
+                </a>
+                <div className="space-x-5">
+                    <a className="text-sm font-medium">Anime</a>
+                    <a className="text-sm font-medium">Genre</a>
+                </div>
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control">
-                <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-                </div>
-                <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                    <img
-                        alt="Tailwind CSS Navbar component"
-                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                    </div>
-                </div>
-                <ul
-                    tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                    <li>
-                    <a className="justify-between">
-                        Profile
-                        <span className="badge">New</span>
-                    </a>
-                    </li>
-                    <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
-                </ul>
+                    <input type="text" placeholder="Search" className="input input-bordered text-white w-24 md:w-auto focus:w-80 focus:outline-none" />
                 </div>
             </div>
         </div>
