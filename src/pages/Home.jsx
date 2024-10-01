@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Home() {
-  const [animes, setAnimes] = useState([]); // Store the fetched anime data
-  const [isFetching, setIsFetching] = useState(false); // Manage button disabled status
-  const [currentPage, setCurrentPage] = useState(1); // Manage current page
-  const [totalPages, setTotalPages] = useState(1); // Manage total pages
-  const itemsPerPage = 21; // Number of items per page
+  const [animes, setAnimes] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage = 21;
 
   const parameters = {
     method: 'get',
@@ -22,20 +22,19 @@ function Home() {
   };
 
   const fetchData = async (page) => {
-    setIsFetching(true); // Disable the button
+    setIsFetching(true);
     try {
-      console.log(`Fetching data for page: ${page}`); // Log the page number
+      console.log(`Fetching data for page: ${page}`);
       const res = await axios.request({
         ...parameters,
         params: { ...parameters.params, page },
       });
-      console.log('API response:', res.data); // Log the API response
       setAnimes(res.data.data);
-      setTotalPages(res.data.meta.totalPage); // Assuming the API returns total pages in meta
+      setTotalPages(res.data.meta.totalPage);
     } catch (error) {
       console.log(error);
     } finally {
-      setIsFetching(false); // Re-enable the button if needed
+      setIsFetching(false);
     }
   };
 
@@ -43,25 +42,27 @@ function Home() {
     fetchData(currentPage);
   }, [currentPage]);
 
-  // Handle next page
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  // Handle previous page
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Generate page numbers for pagination
   const generatePageNumbers = () => {
     const pageNumbers = [];
-    const startPage = Math.max(1, currentPage - 2);
-    const endPage = Math.min(totalPages, currentPage + 2);
+    const pageToShow = 3;
+    let startPage = Math.max(1, currentPage - Math.floor(pageToShow / 2));
+    let endPage = Math.min(totalPages, currentPage + pageToShow - 2);
+
+    if (endPage - startPage + 1 < pageToShow) {
+      startPage = Math.max(1, endPage - pageToShow + 1);
+    }
 
     for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(i);
