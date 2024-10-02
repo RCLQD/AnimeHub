@@ -83,11 +83,11 @@ function Home() {
               className="w-full h-full object-cover absolute opacity-75 transition-transform duration-500 group-hover:opacity-50 group-hover:scale-110"
             />
             <h1
-              className="text-white text-sm font-semibold absolute bottom-2 left-2 text-shadow hover:underline block group-hover:hidden"
+              className="text-white text-sm font-bold absolute bottom-2 left-2 text-shadow hover:underline block group-hover:hidden"
             >
               {anime.title}
             </h1>
-            <div className="px-2 transform translate-y-full duration-500 opacity-0 transition-all group-hover:translate-y-[50%] group-hover:opacity-100">
+            <div className="absolute bottom-0 left-0 right-0 p-2 transform translate-y-5 duration-500 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
               <a 
                 href={anime.link} 
                 rel="noopener noreferrer" 
@@ -100,9 +100,7 @@ function Home() {
                   <p key={genre} className="text-sm text-white text-shadow relative">{genre}</p>
                 ))}
               </div>
-              <div className="overflow-y-scroll h-[7.5rem] scrollbar-none">
-                <p className="text-[8px] text-white text-shadow">{anime.synopsis}</p>
-              </div>
+              <p className="text-[8px] text-white text-shadow">{anime.synopsis}</p>
             </div>
           </div>
         ))}
