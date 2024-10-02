@@ -57,11 +57,12 @@ function Home() {
   const generatePageNumbers = () => {
     const pageNumbers = [];
     const pageToShow = 3;
-    let startPage = Math.max(1, currentPage - Math.floor(pageToShow / 2));
-    let endPage = Math.min(totalPages, currentPage + pageToShow - 2);
+    let startPage = Math.max(2, currentPage - Math.floor(pageToShow / 2));
+    let endPage = Math.min(totalPages - 1, currentPage + pageToShow - 2);
 
+    // Adjust if the page range is smaller than the number of pages to show
     if (endPage - startPage + 1 < pageToShow) {
-      startPage = Math.max(1, endPage - pageToShow + 1);
+      startPage = Math.max(2, endPage - pageToShow + 1);
     }
 
     for (let i = startPage; i <= endPage; i++) {
@@ -105,12 +106,25 @@ function Home() {
           </div>
         ))}
       </section>
-      <div className="flex justify-end mt-10 gap-x-2">
+      <div className="flex justify-end mt-10 gap-x-2 items-center">
         {currentPage > 1 && (
           <button onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-black border border-black py-2 px-4 rounded hover:shadow hover:shadow-black">
             Previous
           </button>
         )}
+        
+        {currentPage > 1 && (
+          <button onClick={() => setCurrentPage(1)} className="bg-black border border-black py-2 px-4 rounded hover:shadow hover:shadow-black">
+            1
+          </button>
+        )}
+        
+        {currentPage > 2 && (
+          <div className="flex items-end">
+            <span className="text-gray-500">...</span>
+          </div>
+        )}
+        
         {generatePageNumbers().map((page) => (
           <button
             key={page}
@@ -124,10 +138,25 @@ function Home() {
             {page}
           </button>
         ))}
-          <button onClick={handleNextPage} disabled={currentPage === totalPages} className="bg-black border border-black py-2 px-4 rounded hover:shadow hover:shadow-black">
+
+        {currentPage < totalPages - 1 && (
+          <div className="flex items-end">
+            <span className="text-gray-500">...</span>
+          </div>
+        )}
+        
+        {currentPage < totalPages && (
+          <button onClick={() => setCurrentPage(totalPages)} className="bg-black border border-black py-2 px-4 rounded hover:shadow hover:shadow-black">
+            {totalPages}
+          </button>
+        )}
+
+        {currentPage < totalPages && (
+          <button onClick={handleNextPage} className="bg-black border border-black py-2 px-4 rounded hover:shadow hover:shadow-black">
             Next
           </button>
-        </div>
+        )}
+      </div>
     </main>
   );
 }
