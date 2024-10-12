@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Anime from './pages/Anime'
-import Home from './pages/Home'
+import Home from './pages/MainHome'
 import Navbar from './pages/Navbar'
 import Genre from './pages/Genre'
 

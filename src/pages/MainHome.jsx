@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function Home() {
+function MainHome() {
   const [animes, setAnimes] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -160,4 +160,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MainHome;
