@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom"
+
 function Navbar() {
     return(
         <div className="navbar bg-black px-20">
             <div className="flex-1 gap-x-12">
-                <a className="text-2xl font-medium font-poppins">
+                <Link to="/" className="text-2xl font-medium font-poppins">
                     <span>Anime<span className="text-red-400 font-semibold">Hub</span></span>
-                </a>
+                </Link>
                 <div className="space-x-5">
-                    <a className="text-sm font-medium">Anime</a>
-                    <a className="text-sm font-medium">Genre</a>
+                    <Link to="/" className="text-sm font-medium">Home</Link>
+                    <Link to="/anime" className="text-sm font-medium">Anime</Link>
+                    <Link to="/genre" className="text-sm font-medium">Genre</Link>
                 </div>
             </div>
             <div className="flex-none gap-2">

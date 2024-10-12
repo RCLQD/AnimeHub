@@ -60,7 +60,6 @@ function Home() {
     let startPage = Math.max(2, currentPage - Math.floor(pageToShow / 2));
     let endPage = Math.min(totalPages - 1, currentPage + pageToShow - 2);
 
-    // Adjust if the page range is smaller than the number of pages to show
     if (endPage - startPage + 1 < pageToShow) {
       startPage = Math.max(2, endPage - pageToShow + 1);
     }
